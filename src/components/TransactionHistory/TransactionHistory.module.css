@@ -1,0 +1,27 @@
+.transactionHistory {
+    display: block;
+    background-color: #eff3f5;
+    border-radius: 6px;
+    box-shadow: 0 0 5px 0 #00000060;
+    
+}
+
+.tableHead {
+    background-color: #fff;
+    font-size: 32px;
+    padding: 30px;
+}
+
+.table {
+    background-color: #fff;
+}
+
+.table:nth-child(odd) {
+    background-color: #eff3f5;
+}
+
+.tableItems {
+    font-size: 22px;
+    padding: 30px;
+    text-align: center;
+}

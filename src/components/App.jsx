@@ -8,13 +8,15 @@ import data from './path/to/data.json';
 import friends from './path/to/friends.json';
 import transactions from './path/to/transactions.json';
 
+
 export const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
+        height: '100%',
         display: 'flex',
         justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
         fontSize: 40,
         color: '#010101'
@@ -33,9 +35,9 @@ export const App = () => {
       <FriendList 
       friends={friends}
       />
-      <TransactionHistory 
+      {<TransactionHistory 
       items={transactions} 
-      />;
+      />}
     </div>
   );
 };
