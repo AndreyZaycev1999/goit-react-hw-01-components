@@ -1,21 +1,40 @@
 import React from "react";
+import PropTypes from "prop-types";
 import css from './Statistics.module.css';
 
-const Statistics = ({ stats }) => {
+const Statistics = ({ title, stats }) => {
+
+    const titleReturn = (title) => {
+        if (title) return <h2 className={css.title}>{title}</h2>;
+        return;
+    };
+
+    const statReturn = ({ id, label, percentage }) => {
+        return <li key={id} className={css.item}>
+            <span className={css.label}>.{label}</span>
+            <span className={css.percentage}>{percentage}%</span>
+        </li>
+    };
+
+    statReturn.propTypes = {
+        id: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        percentage: PropTypes.number.isRequired,
+    };
+
     return (
         <section className={css.statistics}>
-            <h2 className={css.title}>Upload stats</h2>
-
+            {titleReturn(title)}
             <ul className={css.statList}>
-                {stats.map(({ id, label, percentage }) => (
-                    <li key={id} className={css.item}>
-                        <span className={css.label}>.{label}</span>
-                        <span className={css.percentage}>{percentage}%</span>
-                    </li>
-                ))}
+                {stats.map((stat) => statReturn(stat))}
             </ul>        
         </section>
     );
+};
+
+Statistics.propTypes = {
+    title: PropTypes.string,
+    stats: PropTypes.array.isRequired,
 };
 
 export default Statistics;
