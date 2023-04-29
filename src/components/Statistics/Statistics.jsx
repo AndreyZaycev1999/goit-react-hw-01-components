@@ -4,29 +4,26 @@ import css from './Statistics.module.css';
 
 const Statistics = ({ title, stats }) => {
 
-    const titleReturn = (title) => {
-        if (title) return <h2 className={css.title}>{title}</h2>;
-        return;
-    };
-
     const statReturn = ({ id, label, percentage }) => {
-        return <li key={id} className={css.item}>
-            <span className={css.label}>.{label}</span>
-            <span className={css.percentage}>{percentage}%</span>
-        </li>
+        return 
     };
 
     statReturn.propTypes = {
-        id: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        percentage: PropTypes.number.isRequired,
+        
     };
 
     return (
         <section className={css.statistics}>
-            {titleReturn(title)}
+            {title && <h2 className={css.title}>{title}</h2>}
             <ul className={css.statList}>
-                {stats.map((stat) => statReturn(stat))}
+                {stats.map(({ id, label, percentage }) => (
+                    <li 
+                        key={id} 
+                        className={css.item} >
+                        <span className={css.label}>.{label}</span>
+                        <span className={css.percentage}>{percentage}%</span>
+                    </li>
+                ))}
             </ul>        
         </section>
     );
@@ -34,7 +31,13 @@ const Statistics = ({ title, stats }) => {
 
 Statistics.propTypes = {
     title: PropTypes.string,
-    stats: PropTypes.array.isRequired,
+    stats: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+            percentage: PropTypes.number.isRequired,
+        }).isRequired
+    ).isRequired,
 };
 
 export default Statistics;

@@ -6,17 +6,17 @@
     
 }
 
-.tableHead {
+.title {
     background-color: #fff;
     font-size: 32px;
     padding: 30px;
+    border-radius: 6px;
 }
-
-.table {
+.string {
     background-color: #fff;
 }
 
-.table:nth-child(odd) {
+.string:nth-child(even) {
     background-color: #eff3f5;
 }
 
